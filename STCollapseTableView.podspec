@@ -9,5 +9,5 @@ Pod::Spec.new do |s|
   s.source   = { :git => 'https://github.com/jfloresfont/STCollapseTableView.git'  }
   s.description = "STCollapseTableView" 
   s.source_files = 'STCollapseTableView/*.{h,m}'
-  s.requires_arc = false
+  s.requires_arc = true
 end
