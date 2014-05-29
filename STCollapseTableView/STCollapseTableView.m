@@ -132,7 +132,38 @@
     {
         return;
     }
-	
+    
+    
+    //Cambiamos color de todas las sections a gris
+    for (int i=0; i<[self.dataSource numberOfSectionsInTableView:self]; i++) {
+        UIView *header= [self tableView:self viewForHeaderInSection:i];
+        for (id obj in header.subviews) {
+            if([obj isKindOfClass:[UILabel class]]){
+                UILabel *label=(UILabel *)obj;
+                [label setTextColor:[UIColor grayColor]];
+            }
+            if([obj isKindOfClass:[UIImageView class]]){
+                UIImageView *imageViewAux=(UIImageView *)obj;
+                imageViewAux.image=[UIImage imageNamed:@"arrow_grey_down"];
+            }
+        }
+        
+    }
+
+    //Establecemos color header
+    UIView *header= [self tableView:self viewForHeaderInSection:sectionIndex];
+    for (id obj in header.subviews) {
+        if([obj isKindOfClass:[UILabel class]]){
+            UILabel *label=(UILabel *)obj;
+            [label setTextColor:[UIColor blackColor]];
+        }
+        if([obj isKindOfClass:[UIImageView class]]){
+            UIImageView *imageViewAux=(UIImageView *)obj;
+            imageViewAux.image=[UIImage imageNamed:@"arrow_grey_up"];
+        }
+    }
+    
+    
 	if (self.exclusiveSections)
     {
         NSUInteger openedSection = [self openedSection];
@@ -189,6 +220,20 @@
 {
     [self setSectionAtIndex:sectionIndex open:NO];
 	
+
+    //Establecemos color header
+    UIView *header= [self tableView:self viewForHeaderInSection:sectionIndex];
+    for (id obj in header.subviews) {
+        if([obj isKindOfClass:[UILabel class]]){
+            UILabel *label=(UILabel *)obj;
+            [label setTextColor:[UIColor grayColor]];
+        }
+        if([obj isKindOfClass:[UIImageView class]]){
+            UIImageView *imageViewAux=(UIImageView *)obj;
+            imageViewAux.image=[UIImage imageNamed:@"arrow_grey_down"];
+        }
+    }
+    
 	if (animated)
     {
         NSArray* indexPathsToDelete = [self indexPathsForRowsInSectionAtIndex:sectionIndex];
